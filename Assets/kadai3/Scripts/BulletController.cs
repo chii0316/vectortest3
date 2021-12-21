@@ -17,7 +17,7 @@ public class BulletController : MonoBehaviour
     void OnCollisionEnter(Collision c)
     {
         Debug.Log("Hit!");
-        if( c.gameObject.CompareTag("Enemy") )
+        if( c.gameObject.CompareTag("Target") )
         {
             c.gameObject.SetActive(false);
         }

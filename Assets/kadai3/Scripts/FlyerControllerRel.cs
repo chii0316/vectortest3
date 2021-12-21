@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class FlyerControllerRel : MonoBehaviour
 {
-    public float speed = 1.5f;
-    public float rotspeed = 0.3f;
+    public bool isRecoveryMode;
+    public float speed;
+    public float pitchSpeed;
+    public float yawSpeed;
+    public float recoverySpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -14,16 +17,34 @@ public class FlyerControllerRel : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        Rigidbody rb = GetComponent<Rigidbody>();
         if( Input.GetKey(KeyCode.LeftArrow) )
         {
-            GetComponent<Rigidbody>().AddTorque( -transform.up * rotspeed );
+            rb.AddTorque( -transform.up * yawSpeed );
         }
         if( Input.GetKey(KeyCode.RightArrow) )
         {
-            GetComponent<Rigidbody>().AddTorque( transform.up * rotspeed );
+            rb.AddTorque( transform.up * yawSpeed );
         }
-        GetComponent<Rigidbody>().velocity = transform.forward * speed;
+        if( Input.GetKey(KeyCode.UpArrow) )
+        {
+            rb.AddTorque( transform.right * pitchSpeed );
+        }
+        if( Input.GetKey(KeyCode.DownArrow) )
+        {
+            rb.AddTorque( -transform.right * pitchSpeed );
+        }
+
+        if( isRecoveryMode )
+        {
+            Vector3 av = rb.angularVelocity;
+            Vector3 localav =
+  transform.InverseTransformDirection(GetComponent<Rigidbody>().angularVelocity);
+            rb.AddTorque( -transform.right * localav.x * recoverySpeed );
+        }
+
+        rb.velocity = transform.forward * speed;
     }
 }
