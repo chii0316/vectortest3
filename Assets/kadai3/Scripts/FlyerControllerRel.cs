@@ -47,8 +47,7 @@ public class FlyerControllerRel : MonoBehaviour
   rb.AddTorque( -transform.forward * localav.z * recoverySpeed );
 
             Vector3 gv = Vector3.Cross(transform.up, Vector3.up);
-            Vector3 localgv =
-                transform.InverseTransformDirection(gv);
+            Vector3 localgv = transform.InverseTransformDirection(gv);
             rb.AddTorque(transform.forward * localgv.z * 0.1f);
 
             rb.AddTorque( gv * 0.01f );

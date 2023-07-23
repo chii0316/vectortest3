@@ -19,25 +19,9 @@ public class FlyerControllerAbs : MonoBehaviour
         {
             GetComponent<Rigidbody>().AddForce( Vector3.left );
         }
-        if( Input.GetKeyDown(KeyCode.LeftArrow) )
-        {
-            GetComponent<Rigidbody>().AddForce( Vector3.left, ForceMode.Impulse );
-        }
         if( Input.GetKey(KeyCode.RightArrow) )
         {
             GetComponent<Rigidbody>().AddForce( Vector3.right );
-        }
-        if( Input.GetKeyDown(KeyCode.RightArrow) )
-        {
-            GetComponent<Rigidbody>().AddForce( Vector3.right, ForceMode.Impulse );
-        }
-        if( Input.GetKey(KeyCode.UpArrow) )
-        {
-            GetComponent<Rigidbody>().AddForce( Vector3.forward );
-        }
-        if( Input.GetKey(KeyCode.DownArrow) )
-        {
-            GetComponent<Rigidbody>().AddForce( Vector3.back );
         }
     }
 }
