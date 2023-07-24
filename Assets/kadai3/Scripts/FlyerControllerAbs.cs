@@ -15,13 +15,29 @@ public class FlyerControllerAbs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if( Input.GetKey(KeyCode.LeftArrow) )
+        if( Input.GetKey(KeyCode.A) )
         {
             GetComponent<Rigidbody>().AddForce( Vector3.left );
         }
-        if( Input.GetKey(KeyCode.RightArrow) )
+        if( Input.GetKey(KeyCode.D) )
         {
             GetComponent<Rigidbody>().AddForce( Vector3.right );
+        }
+        if(Input.GetKey(KeyCode.W))
+        {
+            GetComponent<Rigidbody>().AddForce( Vector3.forward );
+        }
+        if(Input.GetKey(KeyCode.S))
+        { 
+            GetComponent<Rigidbody>().AddForce( Vector3.back );
+        }
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+            GetComponent<Rigidbody>().AddForce( Vector3.up );
+        }
+        if(Input.GetKey(KeyCode.DownArrow))
+        {
+            GetComponent<Rigidbody>().AddForce( Vector3.down );
         }
     }
 }
